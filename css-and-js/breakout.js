@@ -125,6 +125,14 @@ function draw() {
 // move paddle
 function movePaddle() {
     paddle.x = paddle.x + paddle.dx
+
+    // wall detection
+    if (paddle.x <= 50) {
+        paddle.x = 50
+    }
+    if (paddle.x + paddle.w > canvas.width - 50) {
+        paddle.x = canvas.width - paddle.w - 50
+    }
 }
 
 
