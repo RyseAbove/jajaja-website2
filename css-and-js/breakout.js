@@ -123,7 +123,7 @@ function draw() {
 
 // move paddle
 function movePaddle() {
-    
+    paddle.x = paddle.x + paddle.dx
 }
 
 
