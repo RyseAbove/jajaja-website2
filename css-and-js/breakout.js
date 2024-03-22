@@ -120,4 +120,11 @@ function draw() {
     drawBricks()
 }
 
-draw()
+
+function update() {
+    draw()
+
+    requestAnimationFrame(update)
+}
+
+update()
