@@ -128,8 +128,8 @@ function movePaddle() {
 
 
 // keydown
-function keyDown() {
-    
+function keyDown(e) {
+    console.log('e.key')
 }
 
 
