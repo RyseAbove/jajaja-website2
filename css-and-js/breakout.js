@@ -167,6 +167,23 @@ document.addEventListener('keyup', keyUp)
 function moveBall() {
     ball.x = ball.x + ball.dx
     ball.y = ball.y + ball.dy
+
+    // wall detection (top)
+    if (ball.y + ball.size <= 25) {
+        ball.dy = -1 * ball.dy
+    }
+    // wall detection (right)
+    if (ball.x + ball.size >= canvas.width - 10) {
+        ball.dx = -1 * ball.dx
+    }
+    // wall detection (right)
+    if (ball.y + ball.size >= canvas.height - 10) {
+        ball.dy = -1 * ball.dy
+    }
+    // wall detection (left)
+    if (ball.x + ball.size <= 25) {
+        ball.dx = -1 * ball.dx
+    }
 }
 
 
