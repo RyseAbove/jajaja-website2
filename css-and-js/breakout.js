@@ -127,6 +127,16 @@ function movePaddle() {
 }
 
 
+// keydown
+function keyDown() {
+    
+}
+
+
+// keyboard event handlers
+document.addEventListener('keydown', keyDown)
+
+
 // updates canvas and animation
 function update() {
     movePaddle()
