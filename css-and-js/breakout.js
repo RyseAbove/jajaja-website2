@@ -120,6 +120,13 @@ function draw() {
     drawBricks()
 }
 
+
+// move paddle
+function movePaddle() {
+    
+}
+
+
 // updates canvas and animation
 function update() {
     movePaddle()
