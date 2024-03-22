@@ -114,6 +114,7 @@ function drawScore() {
 
 // draw everything
 function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawBall()
     drawPaddle()
     drawScore()
@@ -135,8 +136,17 @@ function keyDown(e) {
 }
 
 
+// keyup
+function keyUp(e) {
+    if (e.key == 'ArrowRight' || e.key == 'Right') {
+        paddle.dx = 0
+    }
+}
+
+
 // keyboard event handlers
 document.addEventListener('keydown', keyDown)
+document.addEventListener('keyup', keyUp)
 
 
 // updates canvas and animation
