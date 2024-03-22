@@ -127,11 +127,11 @@ function movePaddle() {
     paddle.x = paddle.x + paddle.dx
 
     // wall detection
-    if (paddle.x <= 50) {
-        paddle.x = 50
+    if (paddle.x <= 45) {
+        paddle.x = 45
     }
-    if (paddle.x + paddle.w > canvas.width - 50) {
-        paddle.x = canvas.width - paddle.w - 50
+    if (paddle.x + paddle.w > canvas.width - 45) {
+        paddle.x = canvas.width - paddle.w - 45
     }
 }
 
@@ -163,8 +163,16 @@ document.addEventListener('keydown', keyDown)
 document.addEventListener('keyup', keyUp)
 
 
+// move ball
+function moveBall() {
+    ball.x = ball.x + ball.dx
+    ball.y = ball.y + ball.dy
+}
+
+
 // updates canvas and animation
 function update() {
+    moveBall()
     movePaddle()
     draw()
 
