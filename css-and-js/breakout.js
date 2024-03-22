@@ -120,8 +120,9 @@ function draw() {
     drawBricks()
 }
 
-
+// updates canvas and animation
 function update() {
+    movePaddle()
     draw()
 
     requestAnimationFrame(update)
