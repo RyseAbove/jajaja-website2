@@ -56,8 +56,8 @@ function drawBricks() {
         column.forEach(brick => {
             ctx.beginPath()
             ctx.rect(brick.x, brick.y, brick.w, brick.h)
-            // ctx.fillStyle = bricks.visible ? '#d11406' : 'transparent';
-            ctx.fillStyle = '#d11406'
+            ctx.fillStyle = brick.visible ? '#d11406' : 'transparent';
+            // ctx.fillStyle = '#d11406'
             ctx.fill()
             ctx.closePath()
         })
@@ -67,9 +67,9 @@ function drawBricks() {
 
 // create paddle properties
 paddle = {
-    x: canvas.width / 2 - 40,
+    x: canvas.width / 2 - 100,
     y: canvas.height - 20,
-    w: 80,
+    w: 200,
     h: 10,
     speed: 8,
     dx: 0,
@@ -91,8 +91,8 @@ ball = {
     y: canvas.height / 2,
     size: 10,
     speed: 4,
-    dx: 4,
-    dy: -4,
+    dx: 10,
+    dy: -10,
 }
 
 // draw ball on canvas
@@ -124,14 +124,14 @@ function draw() {
 
 // move paddle
 function movePaddle() {
-    paddle.x = paddle.x + paddle.dx
+    paddle.x = paddle.x + (paddle.dx * 2)
 
     // wall detection
-    if (paddle.x <= 45) {
-        paddle.x = 45
+    if (paddle.x <= 20) {
+        paddle.x = 20
     }
-    if (paddle.x + paddle.w > canvas.width - 45) {
-        paddle.x = canvas.width - paddle.w - 45
+    if (paddle.x + paddle.w > canvas.width - 20) {
+        paddle.x = canvas.width - paddle.w - 20
     }
 }
 
@@ -176,14 +176,64 @@ function moveBall() {
     if (ball.x + ball.size >= canvas.width - 10) {
         ball.dx = -1 * ball.dx
     }
-    // wall detection (right)
-    if (ball.y + ball.size >= canvas.height - 10) {
+    // wall detection (bottom)
+    if (ball.y + ball.size >= canvas.height - 5) {
         ball.dy = -1 * ball.dy
+        showAllBricks()
+        score = 0
     }
     // wall detection (left)
     if (ball.x + ball.size <= 25) {
         ball.dx = -1 * ball.dx
     }
+
+    // paddle collision
+    if (ball.x - ball.size > paddle.x && 
+        ball.x + ball.size < paddle.x + paddle.w && 
+        ball.y + ball.size > paddle.y
+        ) 
+            {
+        ball.dy = -2 * ball.speed
+    }
+
+    // brick collision
+    bricks.forEach(column => {
+        column.forEach(brick => {
+            if (brick.visible) {
+                if (
+                    ball.x - ball.size > brick.x && // left
+                    ball.x + ball.size < brick.x + brick.w && // right
+                    ball.y + ball.size > brick.y && // top
+                    ball.y - ball.size < brick.y + brick.h // bottom
+                ) 
+                {
+                    ball.dy = -1 * ball.dy
+                    brick.visible = false
+                    increaseScore()
+                }
+            }
+        })
+    })
+}
+
+
+// increase score
+function increaseScore() {
+    score++
+
+    if (score == brickRowCount * brickColumnCount) {
+        score == 0 
+        showAllBricks()
+    }
+}
+
+
+function showAllBricks() {
+    bricks.forEach(column => {
+        column.forEach(brick => {
+            brick.visible = true   
+        })
+    })
 }
 
 
