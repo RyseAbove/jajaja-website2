@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creatures: the Hunt</title>
+    <link rel="stylesheet" href="css-and-js/insect.css">
+</head>
+<body>
+
+    <div class="screen">
+        <h1>Creatures: the Hunt</h1>
+        <button class="btn" id="start-btn">Start the hunt</button>
+    </div>
+
+    <div class="screen">
+        <h1>Which creature do you wish to hunt?</h1>
+        <ul class="insects-list">
+            <li>
+                <button class="choose-creature-btn">
+                <p>minion</p>
+                <img src="images/minion.webp" alt="minion">
+                </button>
+            </li>
+            
+            <li>
+                <button class="choose-creature-btn">
+                <p>the eye</p>
+                <img src="images/eye.webp" alt="eye">
+                </button>
+            </li>
+            
+            <li>
+                <button class="choose-creature-btn">
+                <p>da bee</p>
+                <img src="images/bee.png" alt="bee">
+                </button>
+            </li>
+            
+            <li >
+                <button class="choose-creature-btn">
+                <p>salmnder</p>
+                <img src="images/salamander.webp" alt="salamander">
+                </button>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="screen game-container" id="game-container">
+        <h3 class="time" id="time">Time: 00:00</h3>
+        <h3 class="score" id="score">Score: 0</h3>
+        <h4 class="message" id="message">
+            You'll never be able to hunt them all.
+            <br>
+            There is no end to the hordes.
+            <a href="index.html">Home</a>
+        </h4>
+        <h4 class="message-2" id="message-2">
+            You Win!
+            <br>
+            Refresh the page to play again.
+            <a href="index.html">Home</a>
+        </h4>
+        
+    </div> 
+    </div>
+
+    
+       
+</body>
+
+<script src="css-and-js/insect.js"></script>
+</html>
